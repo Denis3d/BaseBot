@@ -3,6 +3,7 @@
 # Website : http://denis3d.ml
 #
 
+import discord
 from discord.ext import commands
 
 import json
@@ -22,9 +23,14 @@ def create_default_config_file():
         json.dump(data, outfile, indent=4)
 
 
-def format_message(s: str, bot: commands.Bot = None, ctx = None):
+def format_message(s: str, bot: commands.Bot = None, ctx = None, member: discord.Member = None):
     if bot is not None:
         s = s.replace("{members_count}", str(len(bot.users)))
 
+    if member is not None:
+        s = s.replace("{member_name}", member.display_name)
+        s = s.replace("{member_id}", str(member.id))
+        s = s.replace("{guild_name}", member.guild.name)
+        s = s.replace("{guild_id}", str(member.guild.id))
     return s
 
