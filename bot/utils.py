@@ -1,3 +1,8 @@
+#
+# Coded by DenisDd#6912
+# Website : http://denis3d.ml
+#
+
 from discord.ext import commands
 
 import json
