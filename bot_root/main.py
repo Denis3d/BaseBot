@@ -52,11 +52,13 @@ async def on_ready():
 
 async def update_presence():
     status = config['presence']
-    while True:
-        for s in status:
-            await bot.change_presence(activity=discord.Game(name=utils.format_message(s, bot=bot)))
-            await asyncio.sleep(config['presence_change_cooldown'])
-
+    if config['presence_change_cooldown'] is not 0:
+        while True:
+            for s in status:
+                await bot.change_presence(activity=discord.Game(name=utils.format_message(s, bot=bot)))
+                await asyncio.sleep(config['presence_change_cooldown'])
+    else:
+        await bot.change_presence(activity=discord.Game(name=utils.format_message(status[0], bot=bot)))
 
 if __name__ == "__main__":
     if len(sys.argv) is 2:
