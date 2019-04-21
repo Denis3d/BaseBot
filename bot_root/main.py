@@ -32,6 +32,8 @@ def run(token: str):
     for importer, module, ispkg in pkgutil.iter_modules(extensions.__path__):
         print('Loading module %s' % module)
         bot.load_extension('extensions.' + module)
+    if token is None:
+        raise Exception("Please give a Token")
     bot.run(token)
 
 
@@ -57,9 +59,11 @@ async def update_presence():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
+    if len(sys.argv) is 2:
+        TOKEN = sys.argv[1]
+    elif 'TOKEN' in os.environ:
         TOKEN = os.environ['TOKEN']
     else:
-        TOKEN = sys.argv[1]
+        TOKEN = None  # This will make the programm crash but create default config file of installed extensions
 
     run(TOKEN)
