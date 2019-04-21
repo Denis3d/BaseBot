@@ -22,7 +22,7 @@ class Welcome_message(commands.Cog):
         self.bot: commands.Bot = bot
         if not os.path.isfile('./config/welcome_message.json'):
             with open('./config/welcome_message.json', 'w+') as outfile:
-                data = {'welcome_message': "Welcome to {member_name}", 'embed_color': {'r': 255, 'g': 0, 'b': 0}, 'welcome_message_channel': None}
+                data = {'welcome_message': "Welcome to {member_name}", 'embed_color': {'r': 255, 'g': 0, 'b': 0}, 'default_role': None, 'welcome_message_channel': None}
                 json.dump(data, outfile, indent=4)
         self.config = json.load(open('./config/welcome_message.json', 'r'))
 
@@ -33,3 +33,6 @@ class Welcome_message(commands.Cog):
                                            self.config['embed_color']['b']),
             description=utils.format_message(self.config['welcome_message'], bot=self.bot, member=member))
         await member.guild.get_channel(self.config['welcome_message_channel']).send(embed=embed) if member.guild.get_channel(self.config['welcome_message_channel']) else print("Wrong channel id in config file")
+
+        if self.config['default_role'] is not None:
+            await member.add_roles(member.guild.get_role(self.config['default_role']))
