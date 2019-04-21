@@ -32,4 +32,4 @@ class Welcome_message(commands.Cog):
             colour=discord.Colour.from_rgb(self.config['embed_color']['r'], self.config['embed_color']['g'],
                                            self.config['embed_color']['b']),
             description=utils.format_message(self.config['welcome_message'], bot=self.bot, member=member))
-        member.guild.get_channel(self.config['welcome_message_channel']).send(embed=embed) if member.guild.get_channel(self.config['welcome_message_channel']) else print("Wrong channel id in config file")
+        await member.guild.get_channel(self.config['welcome_message_channel']).send(embed=embed) if member.guild.get_channel(self.config['welcome_message_channel']) else print("Wrong channel id in config file")
