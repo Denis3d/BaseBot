@@ -28,6 +28,8 @@ class Welcome_message(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
+        if str(member.guild.id) not in self.config:
+            return
         embed = discord.Embed(
             colour=discord.Colour.from_rgb(self.config[str(member.guild.id)]['embed_color']['r'], self.config[str(member.guild.id)]['embed_color']['g'],
                                            self.config[str(member.guild.id)]['embed_color']['b']),
