@@ -2,6 +2,8 @@
 # Coded by DenisDd#6912
 # Website : http://denis3d.ml
 #
+__version__ = "1.0.0"
+
 
 import discord
 from discord.ext import commands
@@ -25,6 +27,7 @@ class Welcome_message(commands.Cog):
                 data = {'insert_guild_id_here': {'welcome_message': "Welcome to {member_name}", 'embed_color': {'r': 255, 'g': 0, 'b': 0}, 'default_roles': [None], 'welcome_message_channel': None}}
                 json.dump(data, outfile, indent=4)
         self.config = json.load(open('./config/welcome_message.json', 'r'))
+        print("Welcome_message %s extension loaded" % __version__)
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):

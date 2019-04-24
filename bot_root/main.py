@@ -45,7 +45,7 @@ async def on_ready():
     print("|  Running as : " + str(bot.user.name))
     print("|  Version : " + config['version'])
     print("|  Discord.py version : " + discord.__version__)
-    print("|  BaseBot : " + config['bot_base_version'])
+    print("|  BaseBot : " + __version__)
     print("|  Bot ID:" + str(bot.user.id))
     print("+-----------------------------------+")
     bot.loop.create_task(update_presence())

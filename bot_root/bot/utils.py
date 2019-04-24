@@ -12,14 +12,8 @@ import re
 
 def create_default_config_file():
     with open('config.json', 'w+') as outfile:
-        data = {}
-        data['prefix'] = "!"
-        data['version'] = "1.0.0"
-        data['bot_base_version'] = "1.0.0"
-        data['description'] = "Easy python discord bot using DenisDd#6912 work"
-        data['presence'] = ["help {members_count} members"]
-        data['presence_change_cooldown'] = 7
-
+        data = {'prefix': "!", 'version': "1.0.0", 'description': "Easy python discord bot using DenisDd#6912 work",
+                'presence': ["help {members_count} members"], 'presence_change_cooldown': 7}
         json.dump(data, outfile, indent=4)
 
 

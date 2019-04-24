@@ -2,6 +2,7 @@
 # Coded by DenisDd#6912
 # Website : http://denis3d.ml
 #
+__version__ = "1.0.0"
 
 import discord
 from discord.ext import commands
@@ -28,6 +29,7 @@ class Simple_command(commands.Cog):
 
         for command in self.config['commands']:
             self.bot.add_command(commands.Command(self.simple_command, name=command))
+        print("Simple_command %s extension loaded" % __version__)
 
     async def simple_command(self, ctx: commands.Context):
         em = discord.Embed(description=self.config['commands'][ctx.command.name]['command_content'], colour=discord.Colour.from_rgb(self.config['commands'][ctx.command.name]['command_color']['r'], self.config['commands'][ctx.command.name]['command_color']['g'], self.config['commands'][ctx.command.name]['command_color']['b']))
