@@ -2,6 +2,7 @@
 # Coded by DenisDd#6912
 # Website : http://denis3d.ml
 #
+__version__ = '1.0.0'
 
 import discord
 from discord.ext import commands
@@ -44,7 +45,7 @@ async def on_ready():
     print("|  Running as : " + str(bot.user.name))
     print("|  Version : " + config['version'])
     print("|  Discord.py version : " + discord.__version__)
-    print("|  Discord.py version : " + config['bot_base_version'])
+    print("|  BaseBot : " + config['bot_base_version'])
     print("|  Bot ID:" + str(bot.user.id))
     print("+-----------------------------------+")
     bot.loop.create_task(update_presence())
